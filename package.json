@@ -13,6 +13,9 @@
     "express-fileupload": "^1.5.0",
     "express-validator": "^7.0.1",
     "i18next": "^23.11.3",
+    "moment": "^2.30.1",
+    "moment-jalaali": "^0.10.0",
+    "moment-timezone": "^0.5.45",
     "nunjucks": "^3.2.4"
   }
 }
