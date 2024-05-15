@@ -52,3 +52,15 @@ export function sleep(ms){
     })
 }
 
+
+export function Random(min, max) {
+    try{
+        return Math.floor(
+            Math.random() * (max - min) + min
+        );
+    }catch(e){
+        return '';
+    }
+}
+  
+
