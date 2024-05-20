@@ -9,6 +9,7 @@ import Translate from "./core/Translate.mjs";
 import * as fs from './core/fs.mjs';
 import Crypto from "./core/Crypto.mjs";
 import dateTime from "./core/dateTime.mjs";
+import {Redis} from "./core/redis.mjs";
 
 
 
@@ -34,7 +35,6 @@ class application{
         this.#app.use(express.urlencoded({extended : true , limit : '10mb'}));
         this.#app.use(express.urlencoded({ limit : '10mb'}));
         const templateDir = 'templates/' + getEnv('TEMPLATE') + '/';
-        log(templateDir)
         this.#app.use(fileUpload({
             useTempFiles : true,
             tempFileDir : '/tmp/'
@@ -57,17 +57,28 @@ class application{
     
     async run(){
         log('aplication is running!!');
-        log(dateTime.getTimeStamp());
-        log(dateTime.toString());
-        log(dateTime.toDateTime("2020-01-05 20:10:25").add('5', "year").add('6', 'h').format("YYYY:MM:DD HH:MM:SS"));
-        log(dateTime.toJalaali('1999-10-27 20:10:25'));
-        log(dateTime.toGreGorian('1378:08:05'));
+        
+        const rediStatus = await Redis.connect(getEnv('REDIS_URI'));
+        if(!rediStatus){
+            log("redis can not connect!");
+            process.exit(-1);
+        };
+        
+        await Redis.del('q101');
+        await Redis.Hset("php" , {"v1" : "ver5" , "ver2" : "ver7"});
+        let r = await Redis.keys('*');
+        log(r)
+        log(await Redis.getHash("php"));
+
+        
         
         const PORT = getEnv('PORT','number');
         this.#app.listen(PORT, () => {
             log(`app listening on port ${PORT}`);
           })
     }
+
+    
 
 }
 

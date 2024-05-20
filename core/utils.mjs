@@ -64,3 +64,30 @@ export function Random(min, max) {
 }
   
 
+export function stringify(obj){
+    try{
+        return JSON.stringify(obj);
+    }catch(e){
+        log(e);
+        return '';
+    }
+}
+
+
+export function isJSON(str) {
+    var ret = true;
+    try {
+       JSON.parse(str);
+    }catch(e) {
+       ret = false;
+    }
+    return ret;
+ }
+
+export function toJSON(str){
+    try{
+        return JSON.parse(str);
+    }catch(e){
+        return {};
+    }
+}

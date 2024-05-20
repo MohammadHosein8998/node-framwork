@@ -12,7 +12,7 @@ class Translate{
     }
 
     changeLanguage(lang){
-        log(fa)
+        // log(fa)
         i18next.changeLanguage(lang);
     }
 

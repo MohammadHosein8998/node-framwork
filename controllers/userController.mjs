@@ -2,6 +2,8 @@ import { log } from "../core/utils.mjs";
 import BaseContoller from "../core/BaseContoller.mjs";
 import {query,validationResult} from "express-validator"
 import Translate from "../core/Translate.mjs";
+import { use } from "i18next";
+import { Redis } from "../core/redis.mjs";
 
 
 class userController extends BaseContoller{
@@ -26,12 +28,12 @@ class userController extends BaseContoller{
     async login(req,res){
         try{
             const result = await this.#loginValidation(req);
-            if(result.length !== 0){
+            if(result.length !== 0){    
                 console.log(result)
                 return res.send(`${result[0]?.msg }`);
             }
             const data = {
-                'username' : Translate.t('user.login',{'x' : 'x is ok!!'})
+                'username' : await Redis.get('q101')
             };
             log(data)
             return res.render(`user/login.html`,data);
