@@ -1,0 +1,49 @@
+{% extends 'layout/index.html' %}
+
+{% block content %}
+<div class="card-wrapper">
+    <div class="brand">
+        <img src="{{ TEMPLATE_NAME }}img/logo.jpg" alt="bootstrap 4 login page">
+    </div>
+    <div class="card fat">
+        <div class="card-body">
+            <h4 class="card-title">{{t("user.recovery")}}</h4>
+            
+            <form method="POST" action="" class="my-login-validation" novalidate="" autocomplete="off">
+                {% AlertDanger "err1" %}
+                Pleas enter Email
+                {% endAlertDanger %}
+                {% AlertDanger "err2" %}
+                 Email is not valid
+                {% endAlertDanger %}
+                {% AlertDanger "already-email" %}
+                email is already 
+                {% endAlertDanger %}
+                {% AlertDanger "notEmail" %}
+                email is not exist
+                {% endAlertDanger %}
+                {% AlertDanger "reset-wait" %}
+                wait 2 minuts to token expired
+                {% endAlertDanger %}
+                {% AlertSuccess "ok"%}
+                your password is recovering
+                {% endAlertSuccess %}
+                <div class="form-group">
+                    <label for="email">E-Mail: <span class="text-danger">*</span></label>
+                    <input id="email" type="email" class="form-control" name="email">
+                    
+                </div>
+
+                <div class="form-group m-0">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        recovery
+                    </button>
+                </div>
+                <div class="mt-4 text-center">
+                    Back to login? <a href="{{ APP_URL }}">BACK</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

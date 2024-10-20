@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base href="{{APP_URL}}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="assets/them1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="{{ TEMPLATE_NAME }}css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ TEMPLATE_NAME }}css/my-login.css">
+    
+    <title>{{title}}</title>
+</head>
+<body class="my-login-page">
+	<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-md-center h-100">
+
+				{% block content %}
+				{% endblock%}
+				
+			</div>
+			
+		</div>
+	</section>
+	<div class="row">
+		<div class="col-12">
+			<div class="footer">
+				Copyright &copy; 2017 &mdash; Your Company 
+			</div>
+		</div>
+	</div>
+
+	<!-- <script src="js/my-login.js"></script> -->
+</body>
+</html>

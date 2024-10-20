@@ -1,0 +1,21 @@
+{% extends 'layout/index.html' %}
+
+
+{% block content %}
+<div class="card-wrapper">
+    <div class="brand">
+        <img src="{{ TEMPLATE_NAME }}img/logo.jpg" alt="logo">
+    </div>
+    <div class="card fat">
+        <div class="card-body">
+            <h1 class="card-title">{{(title)}}</h1>
+            <h2>hi {{user.email}}</h2>
+
+            <div>
+                <a href="/logout">logout</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+{%endblock%}
